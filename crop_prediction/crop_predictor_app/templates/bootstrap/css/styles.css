@@ -1,0 +1,18 @@
+
+body {
+    width: 300px;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+  }
+  
+  p {
+    display: inner-flex;
+    margin: 5px;
+    font-size: 22px;
+    text-align: center;
+    color: blue;
+    border-radius: 6px;
+    border: 1px solid lightblue;
+    padding: 5px;
+  }

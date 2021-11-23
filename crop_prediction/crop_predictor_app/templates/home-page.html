@@ -1,0 +1,47 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" >
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+    <title>Crop Prediction </title >
+</head>
+<body>
+    <form action="{% url 'crop_detail_view' %}" class="form-group" method="post">
+        {% csrf_token %}
+        <!-- {{ form|crispy }} -->
+        <div class="row" style="margin-left: 20%; margin-right: 20%; margin-top: 5%;">
+            <div class="col-12">
+              {{ form.name|as_crispy_field }}
+            </div>
+            <div class="col-12">
+            {{ form.nitrogen_content|as_crispy_field }}
+            </div>
+            <div class="col-12">
+                {{ form.phosphorus_content|as_crispy_field }}
+            </div>
+            <div class="col-12">
+                {{ form.potassium_content|as_crispy_field }}
+              </div>
+              <div class="col-12">
+              {{ form.temperature|as_crispy_field }}
+              </div>
+              <div class="col-12">
+                  {{ form.humidity|as_crispy_field }}
+              </div>
+              <div class="col-12">
+                {{ form.ph|as_crispy_field }}
+            </div>
+            <div class="col-12">
+                {{ form.rainfall|as_crispy_field }}
+            </div>
+          </div>
+        <input type="submit" value="Submit" class="btn btn-success " style="margin-left: 50%">
+    </form>
+
+    
+</body>
+</html>
