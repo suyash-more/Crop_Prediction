@@ -1,8 +1,7 @@
 from django.urls import path
-from .views import crop_detail_view, index, resultpage
+from .views import crop_detail_view, resultpage
 
 urlpatterns = [
-    path('', index, name="index_page"),
-    path('crop', crop_detail_view, name="crop_detail_view"),
-    path('result', resultpage, name="result_view")
+    path('', crop_detail_view, name="crop_detail_view"),
+    path('result/', resultpage, name="resultpage"),
 ]
