@@ -16,21 +16,21 @@ def crop_detail_view(request):
         result_str = "No Crop Suitable for the Given Values"
         data = request.POST
         name = data["name"]
-        nitrogen_content = data["nitrogen_content"]
-        phosphorus_content = data["phosphorus_content"]
-        potassium_content = data["potassium_content"]
-        temperature = data["temperature"]
-        humidity = data["humidity"]
-        ph = data["ph"]
-        rainfall = data["rainfall"]
+        nitrogen_content = int(data["nitrogen_content"])
+        phosphorus_content = int(data["phosphorus_content"])
+        potassium_content = int(data["potassium_content"])
+        temperature = int(data["temperature"])
+        humidity = int(data["humidity"])
+        ph = int(data["ph"])
+        rainfall = int(data["rainfall"])
         form = CropDetailsForm(request.POST)
         if form.is_valid():
-            crop_model=pickle.load(open("C:\\Users\\hp\\Desktop\\pem keys\\Crop_Prediction\\crop_prediction\\crop_predictor_app\\model\\kmeans_model.sav", 'rb'))
+            crop_model=pickle.load(open("E:\\Projects\\Crop Prediction\\Crop_Prediction\\crop_prediction\\crop_predictor_app\\model\\kmeans_model.sav", 'rb'))
             prediction = crop_model.predict((np.array([[nitrogen_content, phosphorus_content, potassium_content, temperature, humidity, ph, rainfall]])))
             crop = CropDetails(name=name, nitrogen_content=nitrogen_content, phosphorus_content=phosphorus_content, potassium_content=potassium_content, temperature=temperature
             , humidity=humidity, ph=ph, rainfall=rainfall)
             crop.save()
-            if bool(prediction):
+            if not bool(prediction):
                 result_str = "No Crop Suitable for the Given Values"
             else :
                 result_str = "Crops which can be planted are : "
